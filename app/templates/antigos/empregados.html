@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% from "macros.html" import table %}
+
+{% block titulo_content %}
+<h1 class="page-header">Empregados</h1>
+{% endblock %}
+
+{% block page_content %}
+
+
+<p>
+
+<a href="{{ url_for('empregados.criar') }}"><button type="button" class="btn btn-primary">Criar Empregado</button></a>
+
+
+</p>
+{{ table(header, columns, rows, tabletype, context = None) }}  
+             
+                        
+                            
+                      
+
+{% endblock %}

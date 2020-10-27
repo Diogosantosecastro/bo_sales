@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% from "macros.html" import table %}
+{% from "macros.html" import crud %}
+
+
+
+{% block titulo_content %}
+<h1 class="page-header">Atributos</h1>
+{% endblock %}
+
+{% block page_content %}
+
+
+<p>
+
+<a href="{{ url_for('fam_atributos.criar_fam_atributos') }}"><button type="button" class="btn btn-primary">Criar Atributo</button></a>
+
+</p>
+
+
+
+  
+
+{{ crud(header, columns, rows, tabletype, objecto, objectos, context = None) }} 
+  
+
+                                   
+                            
+                      
+
+{% endblock %}

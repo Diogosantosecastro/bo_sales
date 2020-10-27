@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% from "macros.html" import table %}
+{% from "macros.html" import crud %}
+
+
+
+{% block titulo_content %}
+<h1 class="page-header">Famila Artigos</h1>
+{% endblock %}
+
+{% block page_content %}
+
+
+<p>
+<button type="button" class="btn btn-primary">Nova Familia</button>
+
+</p>
+
+
+
+  
+
+{{ crud(header, columns, rows, tabletype, objecto, context = None) }} 
+  
+
+                                   
+                            
+                      
+
+{% endblock %}

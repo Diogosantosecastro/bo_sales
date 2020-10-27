@@ -1,0 +1,227 @@
+{% extends "bootstrap/base.html" %}
+{% block head %}
+{{ super() }}
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+{% endblock %}
+{% block styles %}
+{{super()}}
+   
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+     
+    <!-- MetisMenu CSS -->
+    
+
+
+
+    <link href="{{ url_for('static', filename='css/bootstrap-social.css') }}" rel="stylesheet">
+
+
+    <link href="{{ url_for('static', filename='css/metisMenu.min.css') }}" rel="stylesheet">
+    <!-- Timeline CSS -->
+     <link href="{{ url_for('static', filename='css/timeline.css') }}" rel="stylesheet">
+    <!-- Custom CSS -->
+  
+    <link href="{{ url_for('static', filename='css/startmin.css') }}" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+  
+    <link href="{{ url_for('static', filename='css/morris.css') }}" rel="stylesheet" >
+    <!-- Custom Fonts -->
+    <link href="{{ url_for('static', filename='css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+ <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+{% endblock %}
+
+{% block title %}Pleez- BO{% endblock %}
+
+
+
+{% block navbar %}
+{{ super() }}
+
+<div id="wrapper">
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Pleez</a>
+        </div>
+
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+
+        <!-- Top Navigation: Left Menu -->
+        <ul class="nav navbar-nav navbar-left navbar-top-links">
+            <li><a href="#"><i class="fa fa-home fa-fw"></i></a></li>
+        </ul>
+
+        <!-- Top Navigation: Right Menu -->
+        <ul class="nav navbar-right navbar-top-links">
+            
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i>{{ current_user.username }} <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a href="{{ url_for('auth.logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <!-- Sidebar -->
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+
+                <ul class="nav" id="side-menu">
+                    <li class="sidebar-search">
+                        <div class="input-group custom-search-form">
+                            <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                        </div>
+                    </li> 
+                    <li>
+                        <a href="{{ url_for('main.index') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                    </li>
+                     <li>
+                        <a href="{{ url_for('main.establecimentos') }}"><i class="fa fa-table fa-fw"></i> Estabelecimentos</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('main.index') }}"><i class="fa fa-male fa-fw"></i> Empregados</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('main.index') }}"><i class="fa fa-clock-o fa-fw"></i> Terminais Empregados</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-sitemap fa-fw"></i> Pedidos<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                        <li>
+                                <a href="{{ url_for('main.index') }}">Pedidos</a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('main.index') }}">Encaminhamento</a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('main.index') }}">Serviço</a>
+                            </li>
+                            <li>
+                                <a href="#">Third Level <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="#">Third Level Item</a>
+                                    </li>
+                                </ul>   
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-sitemap fa-fw"></i> Artigos<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                        <li>
+                                <a href="{{ url_for('main.index') }}">Artigos</a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('main.index') }}">Categorias</a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('main.index') }}">Atributos</a>
+                            </li>
+                            
+                            
+                        </ul>
+                    </li>
+                      <li>
+                        <a href="#"><i class="fa fa-table fa-fw"></i> Displays</a>
+                    </li>
+                </ul>
+              
+
+            </div>
+        </div>
+    </nav>
+    
+{% endblock %}
+
+
+    <!-- Page Content -->
+  
+            <!-- ... Your content goes here ... -->
+
+
+{% block content %}
+      <div id="page-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                          {% block titulo_content %}{% endblock %}
+                         </div>
+                         </div>
+                        <!-- /.col-lg-12 -->
+                    
+
+
+
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+        </div>
+    
+    {% endfor %}
+
+    {% block page_content %}{% endblock %}
+    
+    
+     </div>
+     </div>
+    
+
+{% endblock %}
+
+{% block scripts %}
+
+
+<!-- jQuery -->
+
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+
+<!-- Metis Menu Plugin JavaScript -->
+
+<script src="{{ url_for('static', filename='js/metisMenu.min.js') }}"></script>
+
+
+<!-- Custom Theme JavaScript -->
+<script src="{{ url_for('static', filename='js/startmin.js') }}"></script>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,234 @@
+{% macro table(header, columns, rows, tabletype, context = None) %}
+{% set c = "table" %}
+{% if tabletype == "sink" %} 
+{% set c = "table table-striped table-bordered table-hover" %}
+{% endif %}
+{% if tabletype == "striped" %} 
+{% set c = "table table-striped" %}
+{% endif %}
+{% if tabletype == "hover" %} 
+{% set c = "table table-hover" %}
+{% endif %}
+{% set tc = "table-responsive" %}
+{% if tabletype == "bordered" %}
+        {% set tc = "table-responsive table-bordered" %}
+{% endif %}
+<div class="panel panel-default">
+	<div class="panel-heading">
+		{{header}}
+	</div>
+	<!-- /.panel-heading -->
+	<div class="panel-body">
+		<div class="{{tc}}">
+			<table class="{{c}}">
+				<thead>
+					<tr>
+						{% for col in columns %}
+						<th>{{col}}</th>
+						{% endfor %}
+					</tr>
+				</thead>
+				<tbody>
+					{% for row in rows %}
+						<tr {% if context and context|length >= loop.index %} class="{{context[loop.index-1]}}" {% endif%}>
+						{% for d in row %}
+							<td>{{d}}</td>
+						{% endfor %}
+						
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		<!-- /.table-responsive -->
+	</div>
+	<!-- /.panel-body -->
+</div>
+<!-- /.panel -->
+{% endmacro %}
+
+{% macro panel(paneltype, header, text) %}
+<div class="col-lg-4">
+<div class="panel panel-{{paneltype}}">
+	<div class="panel-heading">
+		{{header}}
+	</div>
+	<div class="panel-body">
+		{{text}}
+	</div>
+	
+</div>
+</div>
+{% endmacro %}
+{% macro panel_12(paneltype, header, text) %}
+
+<div class="panel panel-{{paneltype}}">
+	<div class="panel-heading">
+		{{header}}
+	</div>
+	<div class="panel-body">
+		{{text}}
+	</div>
+	
+</div>
+
+{% endmacro %}
+
+
+{% macro terminais(paneltype, header, text, footer) %}
+
+{% for row in rows %}
+{{ panel("default",item.name,item.name , item.name)}}
+
+{% endfor %}
+
+
+
+{% endmacro %}
+
+
+
+
+{% macro crud(header, columns, rows, tabletype, objecto,objectos, context = None) %}
+
+{% set c = "table" %}
+{% if tabletype == "sink" %} 
+{% set c = "table table-striped table-bordered table-hover" %}
+{% endif %}
+{% if tabletype == "striped" %} 
+{% set c = "table table-striped" %}
+{% endif %}
+{% if tabletype == "hover" %} 
+{% set c = "table table-hover" %}
+{% endif %}
+{% set tc = "table-responsive" %}
+{% if tabletype == "bordered" %}
+        {% set tc = "table-responsive table-bordered" %}
+{% endif %}
+<div class="panel panel-default">
+	<div class="panel-heading">
+		{{header}}
+	</div>
+	<!-- /.panel-heading -->
+	<div class="panel-body">
+		<div class="{{tc}}">
+			<table class="{{c}}">
+				<thead>
+					<tr>
+						{% for col in columns %}
+						<th>{{col}}</th>
+						{% endfor %}
+						<th> </th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for row in rows %}
+						
+						
+						{% for d in row %}
+						<td>{{d}}</td>
+							
+						{% endfor %}
+    						<td>
+    						<a href="edit{{row[0]}}"><button type="button" class="btn btn-primary btn-xs">Editar</button></a>
+    						<a href="delete{{row[0]}}"><button type="button" class="btn btn-danger btn-xs">Delete</button></a>
+    						</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		<!-- /.table-responsive -->
+	</div>
+	<!-- /.panel-body -->
+</div>
+<!-- /.panel -->
+{% endmacro %}
+
+
+
+
+{% macro tab(header, items) %}
+<div class="panel tabbed-panel panel-primary">
+                                <div class="panel-heading clearfix">
+                                    <div class="panel-title pull-left">{{header}}</div>
+                                       <div class="pull-right">
+                                        <ul class="nav nav-tabs">
+                                        {% for item in items %}
+                                        {% set hrefid="#tab-primary-" + loop.index|string %}
+                        				{% set active="" %}
+                        				{% if loop.index == 1 %}
+                        				{% set active="active" %}
+                        				{% endif %}
+                        				{% if loop.index < 4 %}
+                        				
+                        				<li class="{{active}}"><a href="{{hrefid}}" data-toggle="tab">{{item[0]}}</a></li>
+                        				{% endif %}
+                        				{% if loop.index == 4 %}
+                                        <li class="dropdown">
+                                                <a href="#" data-toggle="dropdown">Mais<span class="caret"></span></a>
+                                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                        {% endif %}
+                                        {% if loop.index >= 4 %}
+                                        <li class="{{active}}"><a href="{{hrefid}}" data-toggle="tab">{{item[0]}}</a></li>
+                                        {% endif %}
+                                        
+                                        {% endfor %}
+                                            
+                                           
+                                                                                        
+                            
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="panel-body">
+                                    <div class="tab-content">
+                                    {% for itemm in items %}
+                                    {% set hrefid="tab-primary-" + loop.index|string %}
+                        				{% set active="tab-pane fade" %}
+                        				{% if loop.index == 1 %}
+                        				{% set active="tab-pane fade in active" %}
+                        				
+                        				{% endif %}
+                        				
+                                        
+                                        
+                                        <div class="{{active}}" id="{{hrefid}}"> 
+                                        
+                                        <div class="form-group">
+                                                    <label>{{itemm[0]}}</label>
+                                                    
+                                                    {% for itemm in itemm[1:] %}
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input name="atributo{{itemm.id }}" type="checkbox" value="{{itemm.id}}">{{itemm.name}}
+                                                        </label>
+                                                    </div>
+                                                    {% endfor %}
+                                                </div>
+                                        
+                                        
+                                        </div>
+                                       
+                                        
+                                    {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+{% endmacro %}
+
+
+
+
+
+
+
+

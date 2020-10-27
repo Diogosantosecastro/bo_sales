@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% from "macros.html" import table %}
+{% from "macros.html" import crud %}
+
+
+
+{% block titulo_content %}
+<h1 class="page-header">Artigos</h1>
+{% endblock %}
+
+{% block page_content %}
+
+
+
+
+<p>
+<a href="{{ url_for('artigos.criar') }}"><button type="button" class="btn btn-primary">Novo Artigo</button></a>
+
+
+</p>
+
+
+
+  
+
+{{ crud(header, columns, rows, tabletype, objecto, context = None) }} 
+  
+
+                                   
+                            
+                      
+
+{% endblock %}
+
+
+
+
+

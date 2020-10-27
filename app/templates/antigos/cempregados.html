@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block titulo_content %}
+<h1 class="page-header">Criar Empregado</h1>
+{% endblock %}
+
+{% block page_content %}
+
+{{ wtf.quick_form(form) }}
+                        
+                            
+                      
+
+{% endblock %}

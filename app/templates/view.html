@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% from "macros.html" import crud %}
+
+{% block titulo_content %}
+<h1 class="page-header">{{titulo}}</h1>
+{% endblock %}
+
+{% block page_content %}
+
+
+<p>
+<a href="criar"><button type="button" class="btn btn-primary">Criar {{objecto}}</button></a>
+
+</p>
+
+
+{{ crud(header, columns, rows, tabletype, objecto, context = None) }} 
+  
+
+                                   
+                            
+                      
+
+{% endblock %}

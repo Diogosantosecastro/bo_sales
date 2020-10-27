@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block titulo_content %}
+<h1 class="page-header">Criar Familia atributos</h1>
+{% endblock %}
+
+{% block page_content %}
+
+{{ wtf.quick_form(form) }}
+<a href="{{ url_for('fam_atributos.index') }}"><button type="button" class="btn btn-primary">Cancelar</button></a>
+                        
+                            
+                      
+
+{% endblock %}
